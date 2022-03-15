@@ -10,12 +10,9 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class HeroService {
-  private readonly API_URL =
-    'https://6229de55be12fc4538aa6c8e.mockapi.io/Heroes';
+  private readonly API_URL = 'https://6229de55be12fc4538aa6c8e.mockapi.io/Heroes';
 
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
   constructor(private messageS: MessageService, private http: HttpClient) {}
 

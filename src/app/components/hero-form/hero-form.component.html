@@ -1,43 +1,49 @@
-<div class="container">
-  <div [hidden]="submitted">
+<!-- Creating a form that will be submitted to the server. -->
+<!-- -->
+<div *ngIf="model" class="container">
+  <div [hidden]="submitted"> <!--Hidden prima del submitted-->
     <h1>Hero Form</h1>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <!-- A form group. It is a container for form controls. -->
       <div class="form-group">
         <label for="name">Name</label>
         <input #nameInput type="text" class="form-control" placeholder="Insert a name" id="name"
                required
                [(ngModel)]="model.name" name="name"
                #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-             class="alert alert-danger">
-          Name is required
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+             Name is required
         </div>
       </div>
 
+
+      <!-- Creating a form group. A form group is a container for form controls. -->
       <div class="form-group">
         <label for="alterEgo">Alter Ego</label>
         <input #alterEgoInput type="text" class="form-control" id="alterEgo"
                [(ngModel)]="model.alterEgo" name="alterEgo">
       </div>
 
+    <!-- A form group. It is a container for form controls. -->
       <div class="form-group">
         <label for="power">Hero Power</label>
         <select class="form-control" id="power"
                 required
                 [(ngModel)]="model.power" name="power"
-                #power="ngModel">
+                #form="ngModel">
           <option #powersOption *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
         </select>
-        <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+        <div [hidden]="form.valid || form.pristine" class="alert alert-danger">
           Power is required
         </div>
       </div>
 
-      <button type="submit" class="btn btn-success" (click)="add(nameInput.value, alterEgoInput.value, power.value);" [disabled]="!heroForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-success" (click)="add(nameInput.value, alterEgoInput.value, form.value);" [disabled]="!heroForm.form.valid">Submit</button>
       <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
     </form>
   </div>
 
+<!-- A [hidden] directive. It is used to hide the element from the DOM. -->
   <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
     <div class="row">

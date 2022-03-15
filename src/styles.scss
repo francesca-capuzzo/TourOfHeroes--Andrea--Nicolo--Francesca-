@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+/*3 modi per importare css:
+1- nel file css o scss con @import
+2- nell'head dell'index con il tag link:css -> href= "link"
+3- nel file angular.json sotto la sezione Style[] -> NB ce ne sono 2 -> style build e style test*/
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
@@ -29,4 +37,3 @@ h1 {
     border-left: 5px solid #a94442; /* red */
   }
 
-  @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');

@@ -11,18 +11,11 @@ import { HeroService } from 'src/app/services/hero.service';
 })
 export class HeroFormComponent {
 
-
-  powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
+  powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
 
   heroes?: Hero[];
 
-  model: Hero = {
-    id: '',
-    name: '',
-    power: '',
-    alterEgo: '',
-  };
+  model: Hero = {id: '', name: '', power: '',alterEgo: ''};
 
   submitted = false;
 
@@ -31,20 +24,20 @@ export class HeroFormComponent {
   }
 
   newHero() {
-    this.model = {id: '42', name: '', power: '', alterEgo: ''};
+    this.model = { id: '', name: '', power: '', alterEgo: '' };
   }
 
-  constructor(private heroS: HeroService) { }
+  constructor(private heroS: HeroService) {}
 
-  add(name: string, alterEgo: string, power: string){
-    name = name.trim()
-    if(name){
-      const hero = {name: name, power: power, alterEgo: alterEgo} as Hero
-      this.heroS.addHero(hero).subscribe(data => {
+  add(name: string, alterEgo: string, power: string) {
+    name = name.trim();
+    if (name) {
+      const hero = { name: name, power: power, alterEgo: alterEgo } as Hero;
+      this.heroS.addHero(hero).subscribe((data) => {
         console.log(data);
         if (this.heroes) {
           this.heroes.push(data);
-        } 
+        }
       });
     }
   }
